@@ -75,45 +75,45 @@ const InterviewComponent: React.FC = () => {
   };
 
   const submitAnswer = async () => {
-    if (!state.answer.trim()) {
-      alert('Please provide an answer');
-      return;
-    }
+  if (!state.answer.trim()) {
+    alert('Please provide an answer');
+    return;
+  }
 
-    setLoading(true);
-    try {
-      const response = await axios.post(`${API_URL}api/interview/start`, {
-        session_id: state.sessionId,
-        answer: state.answer,
+  setLoading(true);
+  try {
+    const response = await axios.post(`${API_URL}api/interview/submit-answer`, {  // ← Changed this line
+      session_id: state.sessionId,
+      answer: state.answer,
+    });
+
+    if (response.data.status === 'completed') {
+      setState({
+        ...state,
+        stage: 'complete',
+        report: response.data.report,
       });
-
-      if (response.data.status === 'completed') {
-        setState({
-          ...state,
-          stage: 'complete',
-          report: response.data.report,
-        });
-      } else {
-        setState({
-          ...state,
-          stage: 'feedback',
-          currentFeedback: response.data.feedback,
-          currentScore: response.data.score || 5,
-          correctAnswer: response.data.correct_answer || '',
-          suggestions: response.data.suggestions || [],
-          nextQuestion: response.data.next_question,
-          questionNumber: response.data.question_number,
-          questionType: response.data.question_type,
-          options: response.data.options || [],
-        });
-      }
-    } catch (error) {
-      console.error('Error submitting answer:', error);
-      alert('Failed to submit answer');
-    } finally {
-      setLoading(false);
+    } else {
+      setState({
+        ...state,
+        stage: 'feedback',
+        currentFeedback: response.data.feedback,
+        currentScore: response.data.score || 5,
+        correctAnswer: response.data.correct_answer || '',
+        suggestions: response.data.suggestions || [],
+        nextQuestion: response.data.next_question,
+        questionNumber: response.data.question_number,
+        questionType: response.data.question_type,
+        options: response.data.options || [],
+      });
     }
-  };
+  } catch (error) {
+    console.error('Error submitting answer:', error);
+    alert('Failed to submit answer');
+  } finally {
+    setLoading(false);
+  }
+};
 
   const moveToNextQuestion = () => {
     setState({
@@ -194,22 +194,22 @@ const InterviewComponent: React.FC = () => {
           </div>
 
           {state.questionType === 'mcq' ? (
-            <div className="mcq-options">
-              {state.options.map((option, index) => (
-                <div key={index} className="option-item">
-                  <input
-                    type="radio"
-                    id={`option-${index}`}
-                    name="mcq-option"
-                    value={option.charAt(0)}
-                    checked={state.answer === option.charAt(0)}
-                    onChange={(e) => setState({ ...state, answer: e.target.value })}
-                  />
-                  <label htmlFor={`option-${index}`}>{option}</label>
-                </div>
-              ))}
-            </div>
-          ) : (
+  <div className="mcq-options">
+    {state.options.map((option, index) => (
+      <div key={index} className="option-item">
+        <input
+          type="radio"
+          id={`option-${index}`}
+          name="mcq-option"
+          value={String.fromCharCode(65 + index)}  // ← This gives "A", "B", "C", "D"
+          checked={state.answer === String.fromCharCode(65 + index)}
+          onChange={(e) => setState({ ...state, answer: e.target.value })}
+        />
+        <label htmlFor={`option-${index}`}>{option}</label>
+      </div>
+    ))}
+  </div>
+) : (
             <textarea
               placeholder="Type your answer here..."
               value={state.answer}
