@@ -17,23 +17,36 @@ This AI-powered interviewer solves the challenge of time-consuming manual Excel 
 ## 📸 Screenshots
 
 ### Welcome Screen
-![Welcome Screen](Welcome-Screen.png)
-*Clean, professional interface to start the assessment*
+<img width="1918" height="1010" alt="Welcome Screen" src="https://github.com/user-attachments/assets/93074a57-e11d-4f33-8ba3-1d2cfa8e9c64" />
+
 
 ### Interview Questions
-![MCQ Question](screenshots/mcq-question.png)
-*Multiple choice questions for objective assessment*
+1.
+<img width="1905" height="1011" alt="Interview Question1" src="https://github.com/user-attachments/assets/addf0591-07be-42a6-a9a7-dfa375b9e584" />
 
-![Open Question](screenshots/open-question.png)
-*Open-ended questions to evaluate in-depth knowledge*
+2.
+<img width="1918" height="1016" alt="Interview Question Gen" src="https://github.com/user-attachments/assets/041932bd-149e-435f-94d4-2427c4262814" />
+
 
 ### Real-time Feedback
-![Feedback Screen](screenshots/feedback.png)
-*Immediate AI-powered feedback after each answer*
+1.
+<img width="1918" height="1012" alt="RealTime Feedback" src="https://github.com/user-attachments/assets/aa9f35a7-4f04-4321-b0f5-910f21288876" />
+
+2.
+<img width="1902" height="1002" alt="RealTime Feedback Gen" src="https://github.com/user-attachments/assets/0ac82f09-f081-4ae3-8a42-ded0d59edaab" />
+
+
+
 
 ### Performance Report
-![Final Report](screenshots/report.png)
-*Comprehensive performance analysis with recommendations*
+1.
+<img width="1918" height="1012" alt="Result " src="https://github.com/user-attachments/assets/cf87d3ff-2f52-47a6-9c98-20ec5b4dc566" />
+2.
+<img width="1918" height="963" alt="Result 1" src="https://github.com/user-attachments/assets/44c739b7-5699-4e36-af4b-2344b5e2a307" />
+3.
+<img width="1912" height="981" alt="Result 3" src="https://github.com/user-attachments/assets/3e099bf3-6915-49f5-935b-029a0c4f1533" />
+
+
 
 ## ✨ Key Features
 
