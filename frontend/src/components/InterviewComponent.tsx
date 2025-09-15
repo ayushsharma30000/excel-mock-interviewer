@@ -50,7 +50,7 @@ const InterviewComponent: React.FC = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post(`${API_URL}/api/interview/start`, {
+      const response = await axios.post(`${API_URL}api/interview/start`, {
         user_name: state.userName,
       });
 
@@ -82,7 +82,7 @@ const InterviewComponent: React.FC = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post(`${API_URL}/api/interview/submit-answer`, {
+      const response = await axios.post(`${API_URL}api/interview/start`, {
         session_id: state.sessionId,
         answer: state.answer,
       });
