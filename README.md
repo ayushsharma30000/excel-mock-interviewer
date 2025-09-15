@@ -2,8 +2,6 @@
 
 An intelligent web application that conducts automated Excel skill assessments through interactive mock interviews, powered by Google Gemini AI.
 
-![Excel Mock Interviewer Banner](screenshots/banner.png)
-
 ## 🌟 Overview
 
 This AI-powered interviewer solves the challenge of time-consuming manual Excel assessments by providing:
@@ -19,7 +17,7 @@ This AI-powered interviewer solves the challenge of time-consuming manual Excel 
 ## 📸 Screenshots
 
 ### Welcome Screen
-![Welcome Screen](screenshots/welcome.png)
+![Welcome Screen](Welcome-Screen.png)
 *Clean, professional interface to start the assessment*
 
 ### Interview Questions
