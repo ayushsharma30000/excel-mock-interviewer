@@ -16,7 +16,7 @@ class GeminiService:
         """Evaluate a candidate's answer using Gemini"""
         
         prompt = f"""
-        You are an expert Excel interviewer. Evaluate this answer based on technical accuracy.
+        You are an expert Excel interviewer. Evaluate this answer and provide helpful feedback.
         
         Question: {question}
         Candidate's Answer: {answer}
@@ -26,19 +26,18 @@ class GeminiService:
         Provide a JSON response with this exact format:
         {{
             "score": <number 0-10>,
-            "feedback": "<2-3 sentences of specific feedback>",
-            "strengths": ["<strength1>", "<strength2>"],
-            "improvements": ["<area1>", "<area2>"],
-            "correct_concepts": ["<concept1>", "<concept2>"],
-            "missing_concepts": ["<concept1>", "<concept2>"]
+            "feedback": "<2-3 sentences of specific feedback WITHOUT mentioning the score>",
+            "correct_answer": "<Provide a comprehensive correct answer to the question>",
+            "suggestions": ["<specific suggestion 1>", "<specific suggestion 2>"],
+            "strengths": ["<what they got right>"],
+            "missing_concepts": ["<what they missed>"]
         }}
         
-        Be fair but thorough. Score breakdown:
-        - 9-10: Expert level, comprehensive answer
-        - 7-8: Strong understanding with minor gaps
-        - 5-6: Basic understanding, some errors
-        - 3-4: Limited understanding
-        - 0-2: Incorrect or very limited
+        Important:
+        - Do NOT mention the score in the feedback
+        - Focus on what they did well and what to improve
+        - Provide the actual correct answer
+        - Give actionable suggestions
         
         Return ONLY the JSON, no other text.
         """
@@ -58,29 +57,12 @@ class GeminiService:
             # Return default evaluation on error
             return {
                 "score": 5,
-                "feedback": "Unable to fully evaluate the response. Please try again.",
-                "strengths": ["Attempted to answer"],
-                "improvements": ["Could not fully assess"],
-                "correct_concepts": [],
-                "missing_concepts": []
+                "feedback": "Thank you for your answer. Let me provide some guidance on this topic.",
+                "correct_answer": "Please refer to Excel documentation for detailed information on this topic.",
+                "suggestions": ["Review the core concepts", "Practice with real examples"],
+                "strengths": ["You provided an answer"],
+                "missing_concepts": ["Unable to assess at this time"]
             }
-    
-    def generate_follow_up_question(self, topic: str, difficulty: str) -> str:
-        """Generate a follow-up question based on topic and difficulty"""
-        
-        prompt = f"""
-        Generate one Excel interview question about {topic} at {difficulty} level.
-        The question should be practical and test real-world Excel skills.
-        Keep it concise (2-3 sentences max).
-        Do not include the answer.
-        """
-        
-        try:
-            response = self.model.generate_content(prompt)
-            return response.text.strip()
-        except Exception as e:
-            print(f"Error generating question: {e}")
-            return "How do you handle errors in Excel formulas?"
 
 # Initialize service
 llm_service = GeminiService()
