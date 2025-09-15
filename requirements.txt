@@ -3,7 +3,6 @@ cachetools==5.5.2
 certifi==2025.8.3
 charset-normalizer==3.4.3
 colorama==0.4.6
-fastapi==0.104.1
 google-ai-generativelanguage==0.6.15
 google-api-core==2.25.1
 google-api-python-client==2.181.0
@@ -30,5 +29,3 @@ typing-inspection==0.4.1
 typing_extensions==4.15.0
 uritemplate==4.2.0
 urllib3==2.5.0
-uvicorn==0.24.0
-
