@@ -54,3 +54,20 @@ logs/
 # Temporary files
 tmp/
 temp/
+
+# Python - Additional patterns
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+*.py[cod]
+*$py.class
+backend/app/__pycache__/
+backend/config/__pycache__/
+
+# React/Node - Additional patterns
+frontend/build/
+frontend/dist/
+.npm
+.eslintcache
+*.tsbuildinfo
